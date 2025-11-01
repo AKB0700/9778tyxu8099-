@@ -27,11 +27,22 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Compute safe image base
+        id: compute_image
+        run: |
+          # Extract repo name (owner/repo => repo)
+          REPO_NAME=${GITHUB_REPOSITORY#*/}
+          # Remove a single trailing hyphen if present
+          SAFE_REPO=${REPO_NAME%'-'}
+          # Construct image base (without tag)
+          IMAGE_BASE=ghcr.io/${GITHUB_REPOSITORY_OWNER}/${SAFE_REPO}
+          echo "IMAGE_BASE=${IMAGE_BASE}" >> $GITHUB_ENV
+
       - name: Extract metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ${{ env.IMAGE_BASE }}
           tags: |
             type=sha
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
