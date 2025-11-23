@@ -25,18 +25,13 @@ const server = app.listen(port, () => {
 });
 
 // Graceful shutdown handling
-process.on('SIGTERM', () => {
-  console.log('SIGTERM received, closing server gracefully');
+const gracefulShutdown = (signal) => {
+  console.log(`${signal} received, closing server gracefully`);
   server.close(() => {
     console.log('Server closed');
     process.exit(0);
   });
-});
+};
 
-process.on('SIGINT', () => {
-  console.log('SIGINT received, closing server gracefully');
-  server.close(() => {
-    console.log('Server closed');
-    process.exit(0);
-  });
-});
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
