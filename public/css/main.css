@@ -16,7 +16,7 @@ body {
 }
 
 .haiku-containers {
-    padding: 10px 0px 20px 0px;
+    padding: 10px 0 20px;
 }
 
 .haikus {
@@ -25,7 +25,7 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    .june-images {
+    .mona-images {
         max-width: 340px;
         max-height: 340px;
     }
