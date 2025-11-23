@@ -16,7 +16,7 @@ app.use(compression());
 
 // Static file serving with caching
 app.use(express.static('public', {
-  maxAge: process.env.NODE_ENV === 'production' ? '1d' : 0,
+  maxAge: process.env.NODE_ENV === 'production' ? '6h' : 0,
   etag: true,
 }));
 
