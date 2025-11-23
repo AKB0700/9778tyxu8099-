@@ -8,7 +8,14 @@ const app = express();
 
 // Security middleware - adds various HTTP headers for security
 app.use(helmet({
-  contentSecurityPolicy: false, // Disabled for inline styles in this demo app
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'"],
+      imgSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+    },
+  },
 }));
 
 // Compression middleware - compresses responses for better performance
