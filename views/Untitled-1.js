@@ -24,14 +24,15 @@ process.memoryUsage(); //?
 
 // Orange indicators means only part of the line was executed
 // because JavaScript stops processing after first false value
-const partialCoverageResult = true;
-console.log('partialCoverage', partialCoverageResult);
+const testCondition = false;
+console.log('partialCoverage', testCondition);
 
 // Green indicators means that Quokka executed all statements
 // on a line of code
+
 // White indicators means that a line of code was never
 // executed by Quokka
-// console.log('noCoverage', true);
+console.log('noCoverage', true);
 
 // ----- 🪲 TIME TRAVEL DEBUGGER -----
 
@@ -48,12 +49,12 @@ console.log('partialCoverage', partialCoverageResult);
       this.y = y;
     }
 
-    // Method to calculate the distance from another point
-    distance(otherPoint) {
-      const dx = this.x - otherPoint.x;
-      const dy = this.y - otherPoint.y;
-      return Math.hypot(dx, dy);
-    }
+// Method to calculate the distance from another point
+distance(otherPoint) {
+  const dx = this.x - otherPoint.x;
+  const dy = this.y - otherPoint.y;
+  return Math.hypot(dx, dy);
+}
 
     // Method to move the point by a given amount
     move(dx, dy) {
