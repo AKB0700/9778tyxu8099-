@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Haikus for Mona</title>
     <link href="/css/main.css" rel="stylesheet" type="text/css">
@@ -11,17 +11,15 @@
   <body>
     <h1>Haikus for Mona</h1>
     <div>
-      <% for(var i=0; i < haikus.length; i++) { %>
+      <% haikus.forEach(function(haiku) { %>
         <img
           class="mona-images"
-          src="images/<%= haikus[i].image %>" />
-        <div 
-          class="haiku-containers">
-          <p 
-            class="haikus"
-          ><%- haikus[i].text %></p>
+          src="images/<%= haiku.image %>"
+          alt="Octocat mascot illustration" />
+        <div class="haiku-containers">
+          <p class="haikus"><%- haiku.text %></p>
         </div>
-      <% } %>
+      <% }); %>
     </div>
   </body>
 </html>
